@@ -26,10 +26,10 @@ public class Twitter {
 	 * @param korisnik
 	 * @param poruka
 	 */
-	public void unesi(String korisnik, String poruka) {
+	public void unesi(String korisnik, String poruka) throws RuntimeException{
 		// Pravi se nova poruka i puni podacima.
 		TwitterPoruka tp = new TwitterPoruka();
-		tp.setKorisnik("korisnik");
+		tp.setKorisnik(korisnik);
 		tp.setPoruka(poruka);
 		// Poruka se unosi u listu na kraj
 		poruke.addLast(tp);
@@ -58,7 +58,7 @@ public class Twitter {
 		// se prekida.
 		for (int i = 0; i < poruke.size(); i++)
 			if (poruke.get(i).getPoruka().indexOf(tag) != -1)
-				if (brojac < maxBroj) {
+				if (brojac < maxBroj - 1) {
 					rezultat[brojac + 1] = poruke.get(i);
 					brojac++;
 				} else
