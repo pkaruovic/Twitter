@@ -2,23 +2,24 @@ package com.twitter.poruke;
 
 public class TwitterPoruka {
 	/**
-	 * ime korisnika
+	 * Ime korisnika
 	 */
 	private String korisnik;
 	/**
-	 * sadrzaj poruke
+	 * Sadrzaj poruke
 	 */
 	private String poruka;
 
 	/**
-	 * @return vraca vrednost atributa korisnik
+	 * Vraca vrednost atributa korisnik
+	 * @return String
 	 */
 	public String getKorisnik() {
 		return korisnik;
 	}
 
 	/**
-	 * postavlja vrednost atributa korisnik na zadatu vrednost
+	 * Postavlja vrednost atributa korisnik na zadatu vrednost
 	 * @param korisnik
 	 */
 	public void setKorisnik(String korisnik) {
@@ -28,14 +29,15 @@ public class TwitterPoruka {
 	}
 
 	/**
-	 * @return vraca vrednost atributa poruka
+	 * Vraca vrednost atributa poruka
+	 * @return String
 	 */
 	public String getPoruka() {
 		return poruka;
 	}
 
 	/**
-	 * postavlja vrednost atributa poruka na zadatu vrednost
+	 * Postavlja vrednost atributa poruka na zadatu vrednost
 	 * @param poruka
 	 */
 	public void setPoruka(String poruka) {
@@ -45,7 +47,8 @@ public class TwitterPoruka {
 	}
 
 	/**
-	 * @return vraca String sa vrednostima korisnik i poruka
+	 * Umesto adrese objekta vraca vrednosti atributa korisnik i poruka
+	 * @return String
 	 */
 	public String toString() {
 		return "KORISNIK:" + korisnik + " PORUKA:" + poruka;
