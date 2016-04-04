@@ -36,16 +36,6 @@ public class TwitterPorukaTest {
 	}
 
 	/**
-	 * Test method for {@link com.twitter.poruke.TwitterPoruka#getKorisnik()}.
-	 */
-	@Test
-	public void testGetKorisnik() {
-		tp.setKorisnik("korisnik");
-		
-		assertEquals("korisnik", tp.getKorisnik());
-	}
-
-	/**
 	 * Test method for {@link com.twitter.poruke.TwitterPoruka#setKorisnik(java.lang.String)}.
 	 */
 	@Test
@@ -63,16 +53,6 @@ public class TwitterPorukaTest {
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testSetKorisnikPrazanString() {
 		tp.setKorisnik("");
-	}
-
-	/**
-	 * Test method for {@link com.twitter.poruke.TwitterPoruka#getPoruka()}.
-	 */
-	@Test
-	public void testGetPoruka() {
-		tp.setPoruka("poruka");
-		
-		assertEquals("poruka", tp.getPoruka());
 	}
 
 	/**

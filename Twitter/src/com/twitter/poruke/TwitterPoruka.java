@@ -1,5 +1,10 @@
 package com.twitter.poruke;
 
+/**
+ * Predstavlja tviter poruku, ima atribute: korisnik i poruka
+ * @author Petar
+ *
+ */
 public class TwitterPoruka {
 	/**
 	 * Ime korisnika
@@ -20,7 +25,8 @@ public class TwitterPoruka {
 
 	/**
 	 * Postavlja vrednost atributa korisnik na zadatu vrednost
-	 * @param korisnik
+	 * @param korisnik - predstavlja String sa nazivom korisnika
+	 * @throws RuntimeException
 	 */
 	public void setKorisnik(String korisnik) {
 		if (korisnik == null || korisnik == "")
@@ -38,7 +44,8 @@ public class TwitterPoruka {
 
 	/**
 	 * Postavlja vrednost atributa poruka na zadatu vrednost
-	 * @param poruka
+	 * @param poruka - predstavlja String sa porukom
+	 * @throws RuntimeException
 	 */
 	public void setPoruka(String poruka) {
 		if (poruka == null || poruka.length() > 140)

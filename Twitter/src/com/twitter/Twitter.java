@@ -1,12 +1,14 @@
-/**
- * Klasa tviter sadrzi listu poruka.
- */
 
 package com.twitter;
 
 import java.util.LinkedList;
 import com.twitter.poruke.TwitterPoruka;
 
+/**
+ * Sadrzi listu TwitterPoruka i odgovarajuce metode za manipulaciju sa njom
+ * @author Petar
+ *
+ */
 public class Twitter {
 	/**
 	 * Lista poruka
@@ -23,8 +25,9 @@ public class Twitter {
 
 	/**
 	 * Pravi se nova poruka i unosi u listu
-	 * @param korisnik
-	 * @param poruka
+	 * @param korisnik - String sa nazivom korisnika
+	 * @param poruka - String sa porukom
+	 * @throws RuntimeException
 	 */
 	public void unesi(String korisnik, String poruka) throws RuntimeException{
 		// Pravi se nova poruka i puni podacima.
@@ -36,9 +39,10 @@ public class Twitter {
 	}
 
 	/**
-	 * Vraca niz poruka
-	 * @param maxBroj
-	 * @param tag
+	 * Vraca niz poruka koje sadrze dati tag
+	 * @param maxBroj - Int koji predstavlja maksimalni broj poruka
+	 * @param tag - String koji predstavlja kljuc za pretragu
+	 * @throws RuntimeException
 	 * @return TwitterPoruka[]
 	 */
 	public TwitterPoruka[] vratiPoruke(int maxBroj, String tag) {
@@ -58,8 +62,8 @@ public class Twitter {
 		// se prekida.
 		for (int i = 0; i < poruke.size(); i++)
 			if (poruke.get(i).getPoruka().indexOf(tag) != -1)
-				if (brojac < maxBroj - 1) {
-					rezultat[brojac + 1] = poruke.get(i);
+				if (brojac < maxBroj) {
+					rezultat[brojac] = poruke.get(i);
 					brojac++;
 				} else
 					break;

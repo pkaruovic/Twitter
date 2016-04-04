@@ -46,14 +46,14 @@ public class TwitterTest {
 	/**
 	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
 	 */
+	@Test
 	public void testUnesi() {
 		t.unesi("Petar", "poruka");
 		
 		LinkedList<TwitterPoruka> lista = t.vratiSvePoruke();
+		String tekst = lista.get(0).getKorisnik() + " " + lista.get(0).getPoruka();
 		
-		if(!(lista.getLast().getKorisnik().equals("Petar") && lista.getLast().getPoruka().equals("poruka"))){
-			fail();
-		}
+		assertEquals("Petar poruka", tekst);
 	}
 	
 	@Test
@@ -62,10 +62,9 @@ public class TwitterTest {
 		t.unesi("Petar", "poruka");
 		
 		LinkedList<TwitterPoruka> lista = t.vratiSvePoruke();
+		String tekst = lista.get(1).getKorisnik() + " " + lista.get(1).getPoruka();
 		
-		if(!(lista.getLast().getKorisnik().equals("Petar") && lista.getLast().getPoruka().equals("poruka"))){
-			fail();
-		}
+		assertEquals("Petar poruka", tekst);
 	}
 	
 	@Test (expected = java.lang.RuntimeException.class)
@@ -73,10 +72,11 @@ public class TwitterTest {
 		t.unesi(null, "");
 		
 		LinkedList<TwitterPoruka> lista = t.vratiSvePoruke();
+		String tekst = lista.get(1).getKorisnik() + " " + lista.get(1).getPoruka();
 		
-		if(!(lista.getLast().getKorisnik().equals("Petar") && lista.getLast().getPoruka().equals("poruka"))){
-			fail();
-		}
+		assertEquals("Petar poruka", tekst);
+
+
 	}
 
 	/**
@@ -84,25 +84,33 @@ public class TwitterTest {
 	 */
 	@Test
 	public void testVratiPoruke() {
-		if(!(t.vratiPoruke(10, "Petar") instanceof TwitterPoruka[])){
-			fail();
-		}
-		
+		assertEquals(new TwitterPoruka[1], t.vratiPoruke(1, "Petar"));	
 	}
 	
 	@Test
 	public void testVratiPorukeSveOk() {
-		t.unesi("Petar", "poruka");
+		t.unesi("Petar", "druga poruka");
 		t.unesi("Petar", "poruka");
 		t.unesi("Petar", "poruka");
 		t.unesi("Petar", "poruka");
 		
 		TwitterPoruka[] niz = t.vratiPoruke(3, "poruka");
+		String tekst = niz[2].getKorisnik() + " " + niz[2].getPoruka();
 		
-		if(!(niz instanceof TwitterPoruka[])){
-			fail();
-		}
+		assertEquals("Petar poruka", tekst);
+	}
+	
+	@Test (expected = java.lang.ArrayIndexOutOfBoundsException.class)
+	public void testVratiPorukeVecaDuzinaNiza() {
+		t.unesi("Petar", "druga poruka");
+		t.unesi("Petar", "poruka");
+		t.unesi("Petar", "poruka");
+		t.unesi("Petar", "poruka");
 		
+		TwitterPoruka[] niz = t.vratiPoruke(3, "poruka");
+		String tekst = niz[3].getKorisnik() + " " + niz[3].getPoruka();
+		
+		assertEquals("Petar poruka", tekst);
 	}
 	
 	@Test (expected = java.lang.RuntimeException.class)
